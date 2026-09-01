@@ -1,0 +1,60 @@
+/* Tailwind v4 source input for the package's compiled theme.css.
+   Build: npm run build (compiles to ./theme.css which components import).
+   Override any --color-theme-* token on :root in your own CSS to re-theme. */
+@import 'tailwindcss';
+
+@theme {
+	--color-theme-bg: #0b0d12;
+	--color-theme-surface: #131722;
+	--color-theme-panel: #1a1f2c;
+	--color-theme-border: #262d3d;
+	--color-theme-text-primary: #e6eaf2;
+	--color-theme-text-secondary: #9aa6bd;
+	--color-theme-text-muted: #5f6b84;
+	--color-theme-accent: #6366f1;
+	--color-theme-danger: #f43f5e;
+	--color-theme-success: #34d399;
+	--color-theme-warning: #f59e0b;
+}
+
+/* Allow consumers to re-theme by overriding tokens (see theme docs). */
+:root {
+	--li-bg: var(--color-theme-bg);
+	--li-surface: var(--color-theme-surface);
+	--li-panel: var(--color-theme-panel);
+	--li-border: var(--color-theme-border);
+	--li-text-primary: var(--color-theme-text-primary);
+	--li-text-secondary: var(--color-theme-text-secondary);
+	--li-text-muted: var(--color-theme-text-muted);
+	--li-accent: var(--color-theme-accent);
+	--li-danger: var(--color-theme-danger);
+	--li-success: var(--color-theme-success);
+	--li-warning: var(--color-theme-warning);
+}
+
+/* Light theme — applied to the LogInspector root via the .li-light class.
+   Element-level declarations beat the inherited :root values. */
+.li-light {
+	--color-theme-bg: #f8fafc;
+	--color-theme-surface: #eef2f7;
+	--color-theme-panel: #ffffff;
+	--color-theme-border: #dbe3ee;
+	--color-theme-text-primary: #0f172a;
+	--color-theme-text-secondary: #475569;
+	--color-theme-text-muted: #8a97a8;
+	--color-theme-accent: #6366f1;
+	--color-theme-danger: #e11d48;
+	--color-theme-success: #059669;
+	--color-theme-warning: #d97706;
+	--li-bg: var(--color-theme-bg);
+	--li-surface: var(--color-theme-surface);
+	--li-panel: var(--color-theme-panel);
+	--li-border: var(--color-theme-border);
+	--li-text-primary: var(--color-theme-text-primary);
+	--li-text-secondary: var(--color-theme-text-secondary);
+	--li-text-muted: var(--color-theme-text-muted);
+	--li-accent: var(--color-theme-accent);
+	--li-danger: var(--color-theme-danger);
+	--li-success: var(--color-theme-success);
+	--li-warning: var(--color-theme-warning);
+}
