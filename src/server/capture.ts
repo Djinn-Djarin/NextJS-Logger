@@ -282,6 +282,8 @@ function getHttpModule(): typeof import('http') | null {
 }
 
 export function installServerCapture(options: CaptureOptions = {}): () => void {
+	if (process.env.NODE_ENV === 'production') return () => {};
+
 	const uninstallFetch = installServerFetchInterceptor({
 		shouldLog: options.shouldLogFetch
 	});

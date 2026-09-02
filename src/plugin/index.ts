@@ -64,6 +64,10 @@ function pickInstrumentationFile(root: string): string {
  *   }
  */
 export function withLogInspector(options: NextLogInspectorPluginOptions = {}) {
+	if (process.env.NODE_ENV === 'production') {
+		return <T = unknown>(config?: T): T => config as T;
+	}
+
 	const basePath = (options.basePath ?? 'api/log-inspector').replace(/^\/+|\/+$/g, '');
 	const root = process.cwd();
 

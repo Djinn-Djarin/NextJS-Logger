@@ -11,5 +11,7 @@ export * from './capture';
 // is captured automatically the moment this module is loaded. Incoming
 // `/api/*` requests are captured by `installServerCapture` — wire it up in
 // `instrumentation.ts` (the plugin generates the file for you).
-installServerFetchInterceptor();
-installServerConsoleInterceptor();
+if (process.env.NODE_ENV !== 'production') {
+	installServerFetchInterceptor();
+	installServerConsoleInterceptor();
+}

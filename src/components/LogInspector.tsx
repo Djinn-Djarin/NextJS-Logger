@@ -33,6 +33,8 @@ export interface LogInspectorProps {
 }
 
 export function LogInspector({ className = '', options }: LogInspectorProps) {
+	if (process.env.NODE_ENV === 'production') return null;
+
 	const logs = useSyncExternalStore(terminalStore.subscribe, terminalStore.getSnapshot, terminalStore.getServerSnapshot);
 	const unreadErrors = useSyncExternalStore(unreadErrorCount.subscribe, unreadErrorCount.getSnapshot, unreadErrorCount.getServerSnapshot);
 

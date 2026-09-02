@@ -50,6 +50,17 @@ export default function RootLayout({ children }) {
 
 `/__log-inspector/*` requests are never logged.
 
+## Production builds
+
+The library auto-detects `NODE_ENV=production` (set automatically by `npm run build`) and disables itself — no `.env` or conditional imports needed:
+
+- **Plugin** → `withLogInspector()` becomes a no-op passthrough (no routes or instrumentation generated)
+- **Component** → `<LogInspector />` renders `null`
+- **Server** → fetch/console interceptors and `installServerCapture()` are skipped
+- **Client** → error handling, SSE stream, and fetch wrapper are not installed
+
+Your production bundle includes zero inspector overhead.
+
 ## Next.js `basePath` Support
 
 If your Next.js project relies on `basePath` (e.g., `basePath: '/traccrops'`), `nextjs-log-inspector` automatically resolves the effective base path for the SSE log stream (`/${basePath}/__log-inspector/stream`) and `/clear` endpoint without extra configuration. You can also explicitly set `NEXT_PUBLIC_BASE_PATH` in your `.env`.
