@@ -42,6 +42,18 @@ function tryParse(text: string): unknown {
 	}
 }
 
+function isBinaryContent(text: string): boolean {
+	if (!text || text.length < 2) return false;
+	const first4 = text.charCodeAt(0) * 256 + text.charCodeAt(1);
+	// gzip magic: 0x1f8b
+	if (first4 === 0x1f8b) return true;
+	// zlib/deflate: 0x7801, 0x789c, 0x78da
+	if (first4 === 0x7801 || first4 === 0x789c || first4 === 0x78da) return true;
+	// brotli starts with common compressed byte ranges
+	if (text.length > 10 && /[\x00-\x08\x0e-\x1f]/.test(text.slice(0, 20))) return true;
+	return false;
+}
+
 function stripHtml(raw: string, fallback: string): string {
 	if (/<!doctype|<html/i.test(raw)) return fallback;
 	return raw;
@@ -116,12 +128,17 @@ function captureResponse(res: any, meta: CaptureMeta, opts: CaptureOptions) {
 	let status = typeof res.statusCode === 'number' ? res.statusCode : 200;
 	let contentType: string | undefined =
 		typeof res.getHeader === 'function' ? (res.getHeader('content-type') as string | undefined) : undefined;
+	let contentEncoding: string | undefined =
+		typeof res.getHeader === 'function' ? (res.getHeader('content-encoding') as string | undefined) : undefined;
 	let rewriting = false;
 	let captured: Buffer[] = [];
 	let capturedLen = 0;
 	let done = false;
 
+	const isCompressedResponse = () => /\b(gzip|br|deflate|zstd|compress)\b/i.test(contentEncoding || '');
+
 	const cap = (chunk: any) => {
+		if (isCompressedResponse()) return;
 		if (capturedLen >= MAX_BODY_CHARS) return;
 		const buf = Buffer.isBuffer(chunk) ? chunk : Buffer.from(String(chunk));
 		const remaining = MAX_BODY_CHARS - capturedLen;
@@ -131,6 +148,7 @@ function captureResponse(res: any, meta: CaptureMeta, opts: CaptureOptions) {
 
 	const maybeStartRewrite = (s: number) => {
 		if (rewriting || done) return;
+		if (isCompressedResponse()) return;
 		const ct = typeof res.getHeader === 'function' ? (res.getHeader('content-type') as string | undefined) : contentType;
 		if (opts.errorToJson !== false && s >= 400 && ct && ct.toLowerCase().includes('html')) {
 			rewriting = true;
@@ -143,13 +161,27 @@ function captureResponse(res: any, meta: CaptureMeta, opts: CaptureOptions) {
 			if (rest.length >= 2 && typeof rest[0] === 'string') {
 				const h = rest[1];
 				if (h && typeof h['content-type'] === 'string') contentType = h['content-type'];
+				if (h && typeof h['content-encoding'] === 'string') contentEncoding = h['content-encoding'];
 			} else if (rest.length >= 1 && typeof rest[0] === 'object' && rest[0] !== null) {
 				const h = rest[0];
 				if (typeof h['content-type'] === 'string') contentType = h['content-type'];
+				if (typeof h['content-encoding'] === 'string') contentEncoding = h['content-encoding'];
 			}
 			maybeStartRewrite(status);
 			if (rewriting) return res; // delay headers until we can rewrite the body
 			return origWriteHead(statusCode, ...rest);
+		};
+	}
+
+	const origSetHeader = res.setHeader?.bind(res);
+	if (origSetHeader) {
+		res.setHeader = function (name: string, value: string | string[]) {
+			if (typeof name === 'string') {
+				const lower = name.toLowerCase();
+				if (lower === 'content-type') contentType = Array.isArray(value) ? value[0] : value;
+				if (lower === 'content-encoding') contentEncoding = Array.isArray(value) ? value[0] : value;
+			}
+			return origSetHeader(name, value);
 		};
 	}
 
@@ -178,6 +210,7 @@ function captureResponse(res: any, meta: CaptureMeta, opts: CaptureOptions) {
 				const duration_ms = Math.round(performance.now() - meta.t0);
 				const cacheHeader = (typeof res.getHeader === 'function' ? (res.getHeader('x-nextjs-cache') || res.getHeader('x-cache')) : '') || '';
 				const isCacheHit = duration_ms <= 1 || /hit/i.test(String(cacheHeader));
+				const compressed = isCompressedResponse() || isBinaryContent(bodyText);
 				pushLog({
 					method: meta.method,
 					url: meta.url,
@@ -186,7 +219,7 @@ function captureResponse(res: any, meta: CaptureMeta, opts: CaptureOptions) {
 					duration_ms,
 					initiator: meta.initiator || undefined,
 					request_body: capBody(meta.getRequestText() ? tryParse(meta.getRequestText()) : undefined),
-					response_body: capBody(bodyText ? tryParse(bodyText) : undefined),
+					response_body: capBody(compressed ? `[Compressed: ${contentEncoding || 'binary'}]` : bodyText ? tryParse(bodyText) : undefined),
 					cached: isCacheHit
 				});
 			};

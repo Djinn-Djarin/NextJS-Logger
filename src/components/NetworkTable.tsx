@@ -1,6 +1,6 @@
-import { Fragment, useRef } from 'react';
+import { Fragment, useRef, useState, useEffect } from 'react';
 import { Icon } from './Icon';
-import { getMethodBadgeClass, type LogColumn, type ParsedLog, type SortDir, type SortKey } from './logUtils';
+import { getMethodBadgeClass, getReqSizeColorClass, getResSizeColorClass, getPendingElapsedMs, type LogColumn, type ParsedLog, type SortDir, type SortKey } from './logUtils';
 
 export interface NetworkTableProps {
 	logs: ParsedLog[];
@@ -30,6 +30,17 @@ export function NetworkTable({
 	onResizeWidths
 }: NetworkTableProps) {
 	const drag = useRef<{ col: string; nextCol: string; startX: number; startWidth: number; startNextWidth: number } | null>(null);
+	const [nowMs, setNowMs] = useState(() => typeof performance !== 'undefined' ? performance.now() : Date.now());
+
+	useEffect(() => {
+		let animId: number;
+		function tick() {
+			setNowMs(typeof performance !== 'undefined' ? performance.now() : Date.now());
+			animId = requestAnimationFrame(tick);
+		}
+		animId = requestAnimationFrame(tick);
+		return () => cancelAnimationFrame(animId);
+	}, []);
 
 	function startColResize(e: React.MouseEvent, col: string) {
 		e.preventDefault();
@@ -128,7 +139,7 @@ export function NetworkTable({
 				<tbody className="">
 					{logs.length === 0 && (
 						<tr>
-							<td colSpan={8} className="py-8 text-center text-theme-text-muted italic text-[11px]">
+							<td colSpan={9} className="py-8 text-center text-theme-text-muted italic text-[11px]">
 								No logs found matching filter criteria.
 							</td>
 						</tr>
@@ -180,17 +191,27 @@ export function NetworkTable({
 									if (col.key === 'status') {
 										return (
 											<td key={col.key} style={{ width: `${colWidths[col.key]}px` }} className="py-1 px-4 whitespace-nowrap">
-												<span className={`inline-flex items-center gap-1 text-[10px] font-semibold ${log.isError ? 'text-red-400' : log.isSuccess ? 'text-emerald-400' : 'text-theme-text-secondary'}`}>
-													<span>{log.statusText}</span>
-												</span>
+												{log.isPending ? (
+													<span className="text-[10px] font-bold text-amber-400 uppercase tracking-wide">
+														PENDING
+													</span>
+												) : (
+													<span className={`inline-flex items-center gap-1 text-[10px] font-semibold ${log.isError ? 'text-rose-400' : log.isSuccess ? 'text-emerald-400' : 'text-theme-text-secondary'}`}>
+														<span>{log.statusText}</span>
+													</span>
+												)}
 											</td>
 										);
 									}
 									if (col.key === 'duration') {
 										return (
 											<td key={col.key} style={{ width: `${colWidths[col.key]}px` }} className="py-1 px-4 whitespace-nowrap font-mono text-[11px]">
-												{log.durationMs !== null ? (
-													<span className={log.durationMs < 100 ? 'text-emerald-400 font-semibold' : log.durationMs < 500 ? 'text-amber-400' : 'text-rose-400 font-bold'}>
+												{log.isPending ? (
+													<span className="text-amber-400 font-mono text-[11px] font-semibold">
+														{getPendingElapsedMs(log.raw, nowMs)}ms
+													</span>
+												) : log.durationMs !== null ? (
+													<span className={log.cached ? 'text-indigo-400 font-semibold' : log.durationMs < 100 ? 'text-emerald-400 font-semibold' : log.durationMs < 500 ? 'text-amber-400' : 'text-rose-400 font-bold'}>
 														{log.durationText}
 													</span>
 												) : (
@@ -199,10 +220,34 @@ export function NetworkTable({
 											</td>
 										);
 									}
+									if (col.key === 'size') {
+										return (
+											<td key={col.key} style={{ width: `${colWidths[col.key]}px` }} className="py-1 px-4 whitespace-nowrap font-mono text-[10px]">
+												{log.isApiCall ? (
+													<div className="flex items-center gap-1 w-full overflow-hidden" title={`Request: ${log.reqSizeText} | Response: ${log.resSizeText}`}>
+														<span className={`${getReqSizeColorClass(log.reqSizeBytes)} shrink-0`}>{log.reqSizeText}</span>
+														<span className="text-theme-text-muted shrink-0">/</span>
+														<span className={`${getResSizeColorClass(log.resSizeBytes)} truncate`}>{log.resSizeText}</span>
+														{log.reqSizeBytes >= 50 * 1024 || log.resSizeBytes >= 50 * 1024 ? (
+															<span title="Heavy payload (>50KB)" className="shrink-0">
+																<Icon icon="alert-circle" className="h-3 w-3 text-rose-500 inline" />
+															</span>
+														) : log.reqSizeBytes >= 10 * 1024 || log.resSizeBytes >= 10 * 1024 ? (
+															<span title="Large payload (>10KB)" className="shrink-0">
+																<Icon icon="alert-triangle" className="h-3 w-3 text-amber-500 inline" />
+															</span>
+														) : null}
+													</div>
+												) : (
+													<span className="text-theme-text-muted text-[10px]">-</span>
+												)}
+											</td>
+										);
+									}
 									if (col.key === 'url') {
 										return (
 											<td key={col.key} style={{ width: `${colWidths[col.key]}px` }} className="py-1 px-4 font-mono text-theme-text-primary break-all whitespace-normal" title={log.url}>
-												<span className={log.isError ? 'text-rose-300' : 'text-theme-text-primary'}>{log.url}</span>
+												<span className={log.isError ? 'text-rose-300' : log.isPending ? 'text-amber-200 font-medium' : log.cached ? 'text-indigo-400/80' : 'text-theme-text-primary'}>{log.url}</span>
 												{log.cached && (
 													<span className="ml-2 text-[9px] font-bold px-1.5 py-0.5 rounded border bg-indigo-500/15 text-indigo-300 border-indigo-500/30 uppercase tracking-wide inline-block">
 														cached
@@ -240,7 +285,7 @@ export function NetworkTable({
 							</tr>
 							{log.raw.details && log.raw.expanded && (
 								<tr key={`${log.index}-details`} className="bg-black/20 dark:bg-white/5 border-b border-theme-border">
-									<td colSpan={8} className="p-3">
+									<td colSpan={9} className="p-3">
 										<div className="text-theme-text-secondary text-[11px] font-mono whitespace-pre-wrap bg-theme-bg/80 p-3 rounded border border-theme-border/50 max-h-60 overflow-y-auto">
 											{log.raw.details}
 										</div>

@@ -15,6 +15,8 @@ export interface LogEntry {
 	request_body?: unknown;
 	response_body?: unknown;
 	cached?: boolean;
+	pending?: boolean;
+	startTime?: number;
 }
 
 export interface LogMeta {
@@ -229,6 +231,33 @@ export function markErrorsRead() {
 
 /** Global store controlling the collapsed state of the inspector UI. */
 export const isTerminalCollapsed: ExternalStore<boolean> = createStore(true);
+
+/** Count of currently pending (in-flight) log entries. */
+export const pendingCount: ExternalStore<number> & { recalculate: () => void } = (() => {
+	const store = createStore(0);
+	let lastSnapshot: LogEntry[] = [];
+
+	function recalculate() {
+		const logs = terminalStore.getSnapshot();
+		if (logs === lastSnapshot) return;
+		lastSnapshot = logs;
+		const count = logs.filter((l) => {
+			if (!l.pending) return false;
+			if (l.status !== undefined && l.status !== null && l.status !== 'Pending') {
+				return false;
+			}
+			return true;
+		}).length;
+		store.set(count);
+	}
+
+	// Subscribe to terminal store changes and recalculate
+	terminalStore.subscribe(() => {
+		recalculate();
+	});
+
+	return { ...store, recalculate };
+})();
 
 /**
  * Hijack console methods + window errors and unhandled rejections so they are

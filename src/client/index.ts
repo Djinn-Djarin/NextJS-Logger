@@ -1,6 +1,7 @@
 import { initGlobalErrorHandling } from './store';
 import { startLogStream, stopLogStream } from './sse';
 import { installClientFetchInterceptor } from './fetchInterceptor';
+import { installIdbInterceptor } from './idbInterceptor';
 import { configureClient, clientConfig, type ClientConfig } from './config';
 
 export * from './config';
@@ -8,6 +9,7 @@ export * from './store';
 export * from './sse';
 export * from './captureInitiator';
 export { installClientFetchInterceptor } from './fetchInterceptor';
+export { installIdbInterceptor } from './idbInterceptor';
 
 export interface InitClientOptions {
 	config?: Partial<ClientConfig>;
@@ -17,6 +19,8 @@ export interface InitClientOptions {
 	fetchInterceptor?: boolean;
 	/** Enable the fetch interceptor's optional external-call logging. */
 	logExternal?: boolean;
+	/** Install the IndexedDB interceptor. Default true. */
+	idbInterceptor?: boolean;
 }
 
 /**
@@ -47,6 +51,9 @@ export function initClientLogging(options: InitClientOptions = {}): () => void {
 	const stopStream = options.stream === false ? () => {} : startLogStream();
 	if (options.fetchInterceptor !== false) {
 		installClientFetchInterceptor({ logExternal: options.logExternal });
+	}
+	if (options.idbInterceptor !== false) {
+		installIdbInterceptor();
 	}
 
 	return () => {

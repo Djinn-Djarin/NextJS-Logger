@@ -7,6 +7,7 @@ import {
 	terminalStore,
 	unreadErrorCount,
 	markErrorsRead,
+	pendingCount,
 	clientConfig,
 	getSavedRecordsLimit,
 	setSavedRecordsLimit,
@@ -37,6 +38,7 @@ export function LogInspector({ className = '', options }: LogInspectorProps) {
 
 	const logs = useSyncExternalStore(terminalStore.subscribe, terminalStore.getSnapshot, terminalStore.getServerSnapshot);
 	const unreadErrors = useSyncExternalStore(unreadErrorCount.subscribe, unreadErrorCount.getSnapshot, unreadErrorCount.getServerSnapshot);
+	const pending = useSyncExternalStore(pendingCount.subscribe, pendingCount.getSnapshot, pendingCount.getServerSnapshot);
 
 	const [searchQuery, setSearchQuery] = useState('');
 	const [filterTag, setFilterTag] = useState('ALL');
@@ -360,6 +362,9 @@ export function LogInspector({ className = '', options }: LogInspectorProps) {
 			>
 				<div className="flex items-center gap-2 text-[10px] text-theme-text-muted font-mono pointer-events-none">
 					<span>{logs.length} logs</span>
+					{pending > 0 && (
+						<span className="text-amber-400 font-semibold">{pending} pending</span>
+					)}
 				</div>
 
 				<div className="flex items-center gap-2">
