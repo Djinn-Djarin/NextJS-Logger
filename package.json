@@ -1,5 +1,5 @@
 {
-  "name": "next-logger",
+  "name": "next-inspect",
   "version": "0.1.0",
   "description": "Zero-code, pluggable request/console log inspector for Next.js. Captures API calls, server-side fetches and console output with file:line initiators — no per-call code needed.",
   "type": "module",
