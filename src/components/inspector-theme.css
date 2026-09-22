@@ -1,0 +1,1318 @@
+/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+@layer properties;
+:root, :host {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  --color-amber-500: oklch(76.9% 0.188 70.08);
+  --color-emerald-400: oklch(76.5% 0.177 163.223);
+  --color-emerald-500: oklch(69.6% 0.17 162.48);
+  --color-sky-300: oklch(82.8% 0.111 230.318);
+  --color-sky-400: oklch(74.6% 0.16 232.661);
+  --color-blue-400: oklch(70.7% 0.165 254.624);
+  --color-blue-500: oklch(62.3% 0.214 259.815);
+  --color-indigo-300: oklch(78.5% 0.115 274.713);
+  --color-indigo-400: oklch(67.3% 0.182 276.935);
+  --color-indigo-500: oklch(58.5% 0.233 277.117);
+  --color-indigo-600: oklch(51.1% 0.262 276.966);
+  --color-purple-400: oklch(71.4% 0.203 305.504);
+  --color-purple-500: oklch(62.7% 0.265 303.9);
+  --color-rose-300: oklch(81% 0.117 11.638);
+  --color-rose-400: oklch(71.2% 0.194 13.428);
+  --color-rose-500: oklch(64.5% 0.246 16.439);
+  --color-slate-400: oklch(70.4% 0.04 256.788);
+  --color-slate-500: oklch(55.4% 0.046 257.417);
+  --color-slate-800: oklch(27.9% 0.041 260.031);
+  --color-black: #000;
+  --color-white: #fff;
+  --spacing: 0.25rem;
+  --container-xs: 20rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-relaxed: 1.625;
+  --radius-lg: 0.5rem;
+  --animate-spin: spin 1s linear infinite;
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --color-theme-bg: var(--li-bg);
+  --color-theme-surface: var(--li-surface);
+  --color-theme-panel: var(--li-panel);
+  --color-theme-border: var(--li-border);
+  --color-theme-text-primary: var(--li-text-primary);
+  --color-theme-text-secondary: var(--li-text-secondary);
+  --color-theme-text-muted: var(--li-text-muted);
+  --text-li-body: var(--li-font-table-body);
+  --text-pill: var(--li-font-pill);
+}
+#nextjs-log-inspector-root .pointer-events-none {
+  pointer-events: none;
+}
+#nextjs-log-inspector-root .\!fixed {
+  position: fixed !important;
+}
+#nextjs-log-inspector-root .absolute {
+  position: absolute;
+}
+#nextjs-log-inspector-root .fixed {
+  position: fixed;
+}
+#nextjs-log-inspector-root .relative {
+  position: relative;
+}
+#nextjs-log-inspector-root .sticky {
+  position: sticky;
+}
+#nextjs-log-inspector-root .\!inset-0 {
+  inset: 0px !important;
+}
+#nextjs-log-inspector-root .inset-y-0 {
+  inset-block: 0px;
+}
+#nextjs-log-inspector-root .top-0 {
+  top: 0px;
+}
+#nextjs-log-inspector-root .top-4 {
+  top: calc(var(--spacing) * 4);
+}
+#nextjs-log-inspector-root .top-full {
+  top: 100%;
+}
+#nextjs-log-inspector-root .right-0 {
+  right: 0px;
+}
+#nextjs-log-inspector-root .right-4 {
+  right: calc(var(--spacing) * 4);
+}
+#nextjs-log-inspector-root .bottom-0 {
+  bottom: 0px;
+}
+#nextjs-log-inspector-root .left-0 {
+  left: 0px;
+}
+#nextjs-log-inspector-root .z-10 {
+  z-index: 10;
+}
+#nextjs-log-inspector-root .z-50 {
+  z-index: 50;
+}
+#nextjs-log-inspector-root .z-\[2147483647\] {
+  z-index: 2147483647;
+}
+#nextjs-log-inspector-root .container {
+  width: 100%;
+  @media (width >= 40rem) {
+    max-width: 40rem;
+  }
+  @media (width >= 48rem) {
+    max-width: 48rem;
+  }
+  @media (width >= 64rem) {
+    max-width: 64rem;
+  }
+  @media (width >= 80rem) {
+    max-width: 80rem;
+  }
+  @media (width >= 96rem) {
+    max-width: 96rem;
+  }
+}
+#nextjs-log-inspector-root .mt-1\.5 {
+  margin-top: calc(var(--spacing) * 1.5);
+}
+#nextjs-log-inspector-root .mt-2 {
+  margin-top: calc(var(--spacing) * 2);
+}
+#nextjs-log-inspector-root .mb-1 {
+  margin-bottom: var(--spacing);
+}
+#nextjs-log-inspector-root .mb-2 {
+  margin-bottom: calc(var(--spacing) * 2);
+}
+#nextjs-log-inspector-root .ml-1 {
+  margin-left: var(--spacing);
+}
+#nextjs-log-inspector-root .ml-2 {
+  margin-left: calc(var(--spacing) * 2);
+}
+#nextjs-log-inspector-root .ml-6 {
+  margin-left: calc(var(--spacing) * 6);
+}
+#nextjs-log-inspector-root .ml-auto {
+  margin-left: auto;
+}
+#nextjs-log-inspector-root .block {
+  display: block;
+}
+#nextjs-log-inspector-root .flex {
+  display: flex;
+}
+#nextjs-log-inspector-root .grid {
+  display: grid;
+}
+#nextjs-log-inspector-root .hidden {
+  display: none;
+}
+#nextjs-log-inspector-root .inline {
+  display: inline;
+}
+#nextjs-log-inspector-root .inline-block {
+  display: inline-block;
+}
+#nextjs-log-inspector-root .inline-flex {
+  display: inline-flex;
+}
+#nextjs-log-inspector-root .table {
+  display: table;
+}
+#nextjs-log-inspector-root .\!h-screen {
+  height: 100vh !important;
+}
+#nextjs-log-inspector-root .h-0\.5 {
+  height: calc(var(--spacing) * 0.5);
+}
+#nextjs-log-inspector-root .h-1\.5 {
+  height: calc(var(--spacing) * 1.5);
+}
+#nextjs-log-inspector-root .h-3 {
+  height: calc(var(--spacing) * 3);
+}
+#nextjs-log-inspector-root .h-3\.5 {
+  height: calc(var(--spacing) * 3.5);
+}
+#nextjs-log-inspector-root .h-6 {
+  height: calc(var(--spacing) * 6);
+}
+#nextjs-log-inspector-root .h-8 {
+  height: calc(var(--spacing) * 8);
+}
+#nextjs-log-inspector-root .h-full {
+  height: 100%;
+}
+#nextjs-log-inspector-root .max-h-60 {
+  max-height: calc(var(--spacing) * 60);
+}
+#nextjs-log-inspector-root .max-h-\[320px\] {
+  max-height: 320px;
+}
+#nextjs-log-inspector-root .min-h-0 {
+  min-height: 0px;
+}
+#nextjs-log-inspector-root .min-h-\[200px\] {
+  min-height: 200px;
+}
+#nextjs-log-inspector-root .\!w-screen {
+  width: 100vw !important;
+}
+#nextjs-log-inspector-root .w-0\.5 {
+  width: calc(var(--spacing) * 0.5);
+}
+#nextjs-log-inspector-root .w-1\.5 {
+  width: calc(var(--spacing) * 1.5);
+}
+#nextjs-log-inspector-root .w-3 {
+  width: calc(var(--spacing) * 3);
+}
+#nextjs-log-inspector-root .w-3\.5 {
+  width: calc(var(--spacing) * 3.5);
+}
+#nextjs-log-inspector-root .w-6 {
+  width: calc(var(--spacing) * 6);
+}
+#nextjs-log-inspector-root .w-8 {
+  width: calc(var(--spacing) * 8);
+}
+#nextjs-log-inspector-root .w-16 {
+  width: calc(var(--spacing) * 16);
+}
+#nextjs-log-inspector-root .w-24 {
+  width: calc(var(--spacing) * 24);
+}
+#nextjs-log-inspector-root .w-40 {
+  width: calc(var(--spacing) * 40);
+}
+#nextjs-log-inspector-root .w-64 {
+  width: calc(var(--spacing) * 64);
+}
+#nextjs-log-inspector-root .w-full {
+  width: 100%;
+}
+#nextjs-log-inspector-root .max-w-\[40\%\] {
+  max-width: 40%;
+}
+#nextjs-log-inspector-root .max-w-xs {
+  max-width: var(--container-xs);
+}
+#nextjs-log-inspector-root .min-w-0 {
+  min-width: 0px;
+}
+#nextjs-log-inspector-root .min-w-\[320px\] {
+  min-width: 320px;
+}
+#nextjs-log-inspector-root .flex-1 {
+  flex: 1;
+}
+#nextjs-log-inspector-root .shrink-0 {
+  flex-shrink: 0;
+}
+#nextjs-log-inspector-root .grow {
+  flex-grow: 1;
+}
+#nextjs-log-inspector-root .table-fixed {
+  table-layout: fixed;
+}
+#nextjs-log-inspector-root .border-collapse {
+  border-collapse: collapse;
+}
+#nextjs-log-inspector-root .origin-top-right {
+  transform-origin: 100% 0;
+}
+#nextjs-log-inspector-root .transform {
+  transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+}
+#nextjs-log-inspector-root .animate-spin {
+  animation: var(--animate-spin);
+}
+#nextjs-log-inspector-root .cursor-col-resize {
+  cursor: col-resize;
+}
+#nextjs-log-inspector-root .cursor-ns-resize {
+  cursor: ns-resize;
+}
+#nextjs-log-inspector-root .cursor-pointer {
+  cursor: pointer;
+}
+#nextjs-log-inspector-root .cursor-row-resize {
+  cursor: row-resize;
+}
+#nextjs-log-inspector-root .resize {
+  resize: both;
+}
+#nextjs-log-inspector-root .scrollbar-thin {
+  scrollbar-width: thin;
+}
+#nextjs-log-inspector-root .grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+#nextjs-log-inspector-root .flex-col {
+  flex-direction: column;
+}
+#nextjs-log-inspector-root .flex-wrap {
+  flex-wrap: wrap;
+}
+#nextjs-log-inspector-root .items-baseline {
+  align-items: baseline;
+}
+#nextjs-log-inspector-root .items-center {
+  align-items: center;
+}
+#nextjs-log-inspector-root .justify-between {
+  justify-content: space-between;
+}
+#nextjs-log-inspector-root .justify-center {
+  justify-content: center;
+}
+#nextjs-log-inspector-root .gap-1 {
+  gap: var(--spacing);
+}
+#nextjs-log-inspector-root .gap-1\.5 {
+  gap: calc(var(--spacing) * 1.5);
+}
+#nextjs-log-inspector-root .gap-2 {
+  gap: calc(var(--spacing) * 2);
+}
+#nextjs-log-inspector-root .gap-2\.5 {
+  gap: calc(var(--spacing) * 2.5);
+}
+:where(#nextjs-log-inspector-root .space-y-0\.5 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(calc(var(--spacing) * 0.5) * var(--tw-space-y-reverse));
+  margin-block-end: calc(calc(var(--spacing) * 0.5) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(#nextjs-log-inspector-root .space-y-1 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(var(--spacing) * var(--tw-space-y-reverse));
+  margin-block-end: calc(var(--spacing) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(#nextjs-log-inspector-root .space-y-1\.5 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(calc(var(--spacing) * 1.5) * var(--tw-space-y-reverse));
+  margin-block-end: calc(calc(var(--spacing) * 1.5) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(#nextjs-log-inspector-root .space-y-2 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+  margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(#nextjs-log-inspector-root .space-y-2\.5 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(calc(var(--spacing) * 2.5) * var(--tw-space-y-reverse));
+  margin-block-end: calc(calc(var(--spacing) * 2.5) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(#nextjs-log-inspector-root .space-y-4 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
+  margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(#nextjs-log-inspector-root .divide-y > :not(:last-child)) {
+  --tw-divide-y-reverse: 0;
+  border-bottom-style: var(--tw-border-style);
+  border-top-style: var(--tw-border-style);
+  border-top-width: calc(1px * var(--tw-divide-y-reverse));
+  border-bottom-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+}
+:where(#nextjs-log-inspector-root .divide-theme-border\/40 > :not(:last-child)) {
+  border-color: var(--color-theme-border);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-theme-border) 40%, transparent);
+  }
+}
+#nextjs-log-inspector-root .truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#nextjs-log-inspector-root .overflow-auto {
+  overflow: auto;
+}
+#nextjs-log-inspector-root .overflow-hidden {
+  overflow: hidden;
+}
+#nextjs-log-inspector-root .overflow-y-auto {
+  overflow-y: auto;
+}
+#nextjs-log-inspector-root .rounded {
+  border-radius: 0.25rem;
+}
+#nextjs-log-inspector-root .rounded-full {
+  border-radius: calc(infinity * 1px);
+}
+#nextjs-log-inspector-root .rounded-lg {
+  border-radius: var(--radius-lg);
+}
+#nextjs-log-inspector-root .border {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+}
+#nextjs-log-inspector-root .border-0 {
+  border-style: var(--tw-border-style);
+  border-width: 0px;
+}
+#nextjs-log-inspector-root .border-t {
+  border-top-style: var(--tw-border-style);
+  border-top-width: 1px;
+}
+#nextjs-log-inspector-root .border-b {
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 1px;
+}
+#nextjs-log-inspector-root .border-b-2 {
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 2px;
+}
+#nextjs-log-inspector-root .border-l {
+  border-left-style: var(--tw-border-style);
+  border-left-width: 1px;
+}
+#nextjs-log-inspector-root .border-amber-500\/20 {
+  border-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 20%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-amber-500) 20%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-amber-500\/30 {
+  border-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 30%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-amber-500) 30%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-blue-500\/30 {
+  border-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 30%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-blue-500) 30%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-emerald-400 {
+  border-color: var(--color-emerald-400);
+}
+#nextjs-log-inspector-root .border-emerald-500\/30 {
+  border-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 30%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-emerald-500) 30%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-indigo-500\/20 {
+  border-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 20%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-indigo-500) 20%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-indigo-500\/30 {
+  border-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 30%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-indigo-500) 30%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-indigo-500\/40 {
+  border-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 40%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-indigo-500) 40%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-purple-500\/30 {
+  border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 30%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-purple-500) 30%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-rose-500\/30 {
+  border-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 30%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-rose-500) 30%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-slate-500\/30 {
+  border-color: color-mix(in srgb, oklch(55.4% 0.046 257.417) 30%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-slate-500) 30%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-slate-800 {
+  border-color: var(--color-slate-800);
+}
+#nextjs-log-inspector-root .border-theme-border {
+  border-color: var(--color-theme-border);
+}
+#nextjs-log-inspector-root .border-theme-border\/20 {
+  border-color: var(--color-theme-border);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-theme-border) 20%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-theme-border\/30 {
+  border-color: var(--color-theme-border);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-theme-border) 30%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-theme-border\/40 {
+  border-color: var(--color-theme-border);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-theme-border) 40%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-theme-border\/50 {
+  border-color: var(--color-theme-border);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-theme-border) 50%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-theme-border\/60 {
+  border-color: var(--color-theme-border);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-theme-border) 60%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-theme-border\/70 {
+  border-color: var(--color-theme-border);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-theme-border) 70%, transparent);
+  }
+}
+#nextjs-log-inspector-root .border-transparent {
+  border-color: transparent;
+}
+#nextjs-log-inspector-root .bg-amber-500\/10 {
+  background-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 10%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-amber-500) 10%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-amber-500\/15 {
+  background-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 15%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-amber-500) 15%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-black\/20 {
+  background-color: color-mix(in srgb, #000 20%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-black) 20%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-blue-500\/15 {
+  background-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 15%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-blue-500) 15%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-emerald-500\/15 {
+  background-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 15%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-emerald-500) 15%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-indigo-500\/10 {
+  background-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 10%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-indigo-500) 10%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-indigo-500\/15 {
+  background-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 15%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-indigo-500) 15%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-indigo-500\/20 {
+  background-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 20%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-indigo-500) 20%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-indigo-600 {
+  background-color: var(--color-indigo-600);
+}
+#nextjs-log-inspector-root .bg-purple-500\/15 {
+  background-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 15%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-purple-500) 15%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-rose-500\/15 {
+  background-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 15%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-rose-500) 15%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-slate-500\/15 {
+  background-color: color-mix(in srgb, oklch(55.4% 0.046 257.417) 15%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-slate-500) 15%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-theme-bg {
+  background-color: var(--color-theme-bg);
+}
+#nextjs-log-inspector-root .bg-theme-bg\/80 {
+  background-color: var(--color-theme-bg);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-theme-bg) 80%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-theme-border\/40 {
+  background-color: var(--color-theme-border);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-theme-border) 40%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-theme-border\/60 {
+  background-color: var(--color-theme-border);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-theme-border) 60%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-theme-panel {
+  background-color: var(--color-theme-panel);
+}
+#nextjs-log-inspector-root .bg-theme-panel\/20 {
+  background-color: var(--color-theme-panel);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-theme-panel) 20%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-theme-panel\/30 {
+  background-color: var(--color-theme-panel);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-theme-panel) 30%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-theme-surface {
+  background-color: var(--color-theme-surface);
+}
+#nextjs-log-inspector-root .bg-theme-surface\/30 {
+  background-color: var(--color-theme-surface);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-theme-surface) 30%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-theme-surface\/40 {
+  background-color: var(--color-theme-surface);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-theme-surface) 40%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-theme-surface\/50 {
+  background-color: var(--color-theme-surface);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-theme-surface) 50%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-theme-surface\/70 {
+  background-color: var(--color-theme-surface);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-theme-surface) 70%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-theme-text-muted\/40 {
+  background-color: var(--color-theme-text-muted);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-theme-text-muted) 40%, transparent);
+  }
+}
+#nextjs-log-inspector-root .bg-transparent {
+  background-color: transparent;
+}
+#nextjs-log-inspector-root .p-0\.5 {
+  padding: calc(var(--spacing) * 0.5);
+}
+#nextjs-log-inspector-root .p-1 {
+  padding: var(--spacing);
+}
+#nextjs-log-inspector-root .p-1\.5 {
+  padding: calc(var(--spacing) * 1.5);
+}
+#nextjs-log-inspector-root .p-2 {
+  padding: calc(var(--spacing) * 2);
+}
+#nextjs-log-inspector-root .p-2\.5 {
+  padding: calc(var(--spacing) * 2.5);
+}
+#nextjs-log-inspector-root .p-3 {
+  padding: calc(var(--spacing) * 3);
+}
+#nextjs-log-inspector-root .p-4 {
+  padding: calc(var(--spacing) * 4);
+}
+#nextjs-log-inspector-root .p-6 {
+  padding: calc(var(--spacing) * 6);
+}
+#nextjs-log-inspector-root .px-1\.5 {
+  padding-inline: calc(var(--spacing) * 1.5);
+}
+#nextjs-log-inspector-root .px-2 {
+  padding-inline: calc(var(--spacing) * 2);
+}
+#nextjs-log-inspector-root .px-3 {
+  padding-inline: calc(var(--spacing) * 3);
+}
+#nextjs-log-inspector-root .px-4 {
+  padding-inline: calc(var(--spacing) * 4);
+}
+#nextjs-log-inspector-root .py-0\.5 {
+  padding-block: calc(var(--spacing) * 0.5);
+}
+#nextjs-log-inspector-root .py-1 {
+  padding-block: var(--spacing);
+}
+#nextjs-log-inspector-root .py-1\.5 {
+  padding-block: calc(var(--spacing) * 1.5);
+}
+#nextjs-log-inspector-root .py-2 {
+  padding-block: calc(var(--spacing) * 2);
+}
+#nextjs-log-inspector-root .py-8 {
+  padding-block: calc(var(--spacing) * 8);
+}
+#nextjs-log-inspector-root .pt-1 {
+  padding-top: var(--spacing);
+}
+#nextjs-log-inspector-root .pr-2 {
+  padding-right: calc(var(--spacing) * 2);
+}
+#nextjs-log-inspector-root .pr-7 {
+  padding-right: calc(var(--spacing) * 7);
+}
+#nextjs-log-inspector-root .pb-1 {
+  padding-bottom: var(--spacing);
+}
+#nextjs-log-inspector-root .pb-1\.5 {
+  padding-bottom: calc(var(--spacing) * 1.5);
+}
+#nextjs-log-inspector-root .pl-2\.5 {
+  padding-left: calc(var(--spacing) * 2.5);
+}
+#nextjs-log-inspector-root .pl-8 {
+  padding-left: calc(var(--spacing) * 8);
+}
+#nextjs-log-inspector-root .text-center {
+  text-align: center;
+}
+#nextjs-log-inspector-root .text-left {
+  text-align: left;
+}
+#nextjs-log-inspector-root .text-right {
+  text-align: right;
+}
+#nextjs-log-inspector-root .font-mono {
+  font-family: var(--font-mono);
+}
+#nextjs-log-inspector-root .font-sans {
+  font-family: var(--font-sans);
+}
+#nextjs-log-inspector-root .text-\[10px\] {
+  font-size: 10px;
+}
+#nextjs-log-inspector-root .text-\[11px\] {
+  font-size: 11px;
+}
+#nextjs-log-inspector-root .text-li-body {
+  font-size: var(--text-li-body);
+}
+#nextjs-log-inspector-root .text-pill {
+  font-size: var(--text-pill);
+}
+#nextjs-log-inspector-root .leading-relaxed {
+  --tw-leading: var(--leading-relaxed);
+  line-height: var(--leading-relaxed);
+}
+#nextjs-log-inspector-root .leading-snug {
+  --tw-leading: var(--leading-snug);
+  line-height: var(--leading-snug);
+}
+#nextjs-log-inspector-root .leading-tight {
+  --tw-leading: var(--leading-tight);
+  line-height: var(--leading-tight);
+}
+#nextjs-log-inspector-root .font-bold {
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+}
+#nextjs-log-inspector-root .font-medium {
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
+}
+#nextjs-log-inspector-root .font-normal {
+  --tw-font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-normal);
+}
+#nextjs-log-inspector-root .font-semibold {
+  --tw-font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-semibold);
+}
+#nextjs-log-inspector-root .tracking-wide {
+  --tw-tracking: var(--tracking-wide);
+  letter-spacing: var(--tracking-wide);
+}
+#nextjs-log-inspector-root .tracking-wider {
+  --tw-tracking: var(--tracking-wider);
+  letter-spacing: var(--tracking-wider);
+}
+#nextjs-log-inspector-root .break-words {
+  overflow-wrap: break-word;
+}
+#nextjs-log-inspector-root .break-all {
+  word-break: break-all;
+}
+#nextjs-log-inspector-root .text-ellipsis {
+  text-overflow: ellipsis;
+}
+#nextjs-log-inspector-root .whitespace-nowrap {
+  white-space: nowrap;
+}
+#nextjs-log-inspector-root .whitespace-pre-wrap {
+  white-space: pre-wrap;
+}
+#nextjs-log-inspector-root .text-amber-500 {
+  color: var(--color-amber-500);
+}
+#nextjs-log-inspector-root .text-blue-400 {
+  color: var(--color-blue-400);
+}
+#nextjs-log-inspector-root .text-emerald-400 {
+  color: var(--color-emerald-400);
+}
+#nextjs-log-inspector-root .text-emerald-500 {
+  color: var(--color-emerald-500);
+}
+#nextjs-log-inspector-root .text-indigo-300 {
+  color: var(--color-indigo-300);
+}
+#nextjs-log-inspector-root .text-indigo-400 {
+  color: var(--color-indigo-400);
+}
+#nextjs-log-inspector-root .text-indigo-400\/80 {
+  color: color-mix(in srgb, oklch(67.3% 0.182 276.935) 80%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    color: color-mix(in oklab, var(--color-indigo-400) 80%, transparent);
+  }
+}
+#nextjs-log-inspector-root .text-purple-400 {
+  color: var(--color-purple-400);
+}
+#nextjs-log-inspector-root .text-rose-300 {
+  color: var(--color-rose-300);
+}
+#nextjs-log-inspector-root .text-rose-400 {
+  color: var(--color-rose-400);
+}
+#nextjs-log-inspector-root .text-rose-500 {
+  color: var(--color-rose-500);
+}
+#nextjs-log-inspector-root .text-sky-300 {
+  color: var(--color-sky-300);
+}
+#nextjs-log-inspector-root .text-sky-400 {
+  color: var(--color-sky-400);
+}
+#nextjs-log-inspector-root .text-slate-400 {
+  color: var(--color-slate-400);
+}
+#nextjs-log-inspector-root .text-theme-text-muted {
+  color: var(--color-theme-text-muted);
+}
+#nextjs-log-inspector-root .text-theme-text-primary {
+  color: var(--color-theme-text-primary);
+}
+#nextjs-log-inspector-root .text-theme-text-secondary {
+  color: var(--color-theme-text-secondary);
+}
+#nextjs-log-inspector-root .text-white {
+  color: var(--color-white);
+}
+#nextjs-log-inspector-root .lowercase {
+  text-transform: lowercase;
+}
+#nextjs-log-inspector-root .normal-case {
+  text-transform: none;
+}
+#nextjs-log-inspector-root .uppercase {
+  text-transform: uppercase;
+}
+#nextjs-log-inspector-root .italic {
+  font-style: italic;
+}
+#nextjs-log-inspector-root .accent-indigo-500 {
+  accent-color: var(--color-indigo-500);
+}
+#nextjs-log-inspector-root .shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+#nextjs-log-inspector-root .shadow-\[inset_0_-1px_0_var\(--color-theme-border\)\] {
+  --tw-shadow: inset 0 -1px 0 var(--tw-shadow-color, var(--color-theme-border));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+#nextjs-log-inspector-root .filter {
+  filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+}
+#nextjs-log-inspector-root .transition-all {
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+#nextjs-log-inspector-root .transition-colors {
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+#nextjs-log-inspector-root .outline-none {
+  --tw-outline-style: none;
+  outline-style: none;
+}
+#nextjs-log-inspector-root .select-none {
+  -webkit-user-select: none;
+  user-select: none;
+}
+@media (hover: hover) {
+  #nextjs-log-inspector-root .group-hover\:bg-white:is(:where(.group):hover *) {
+    background-color: var(--color-white);
+  }
+}
+#nextjs-log-inspector-root .placeholder\:text-theme-text-secondary::placeholder {
+  color: var(--color-theme-text-secondary);
+}
+@media (hover: hover) {
+  #nextjs-log-inspector-root .hover\:border-rose-500\/40:hover {
+    border-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 40%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    #nextjs-log-inspector-root .hover\:border-rose-500\/40:hover {
+      border-color: color-mix(in oklab, var(--color-rose-500) 40%, transparent);
+    }
+  }
+  #nextjs-log-inspector-root .hover\:bg-indigo-500:hover {
+    background-color: var(--color-indigo-500);
+  }
+  #nextjs-log-inspector-root .hover\:bg-indigo-500\/15:hover {
+    background-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 15%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    #nextjs-log-inspector-root .hover\:bg-indigo-500\/15:hover {
+      background-color: color-mix(in oklab, var(--color-indigo-500) 15%, transparent);
+    }
+  }
+  #nextjs-log-inspector-root .hover\:bg-rose-500\/10:hover {
+    background-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 10%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    #nextjs-log-inspector-root .hover\:bg-rose-500\/10:hover {
+      background-color: color-mix(in oklab, var(--color-rose-500) 10%, transparent);
+    }
+  }
+  #nextjs-log-inspector-root .hover\:bg-theme-panel:hover {
+    background-color: var(--color-theme-panel);
+  }
+  #nextjs-log-inspector-root .hover\:bg-theme-surface:hover {
+    background-color: var(--color-theme-surface);
+  }
+  #nextjs-log-inspector-root .hover\:bg-theme-surface\/50:hover {
+    background-color: var(--color-theme-surface);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    #nextjs-log-inspector-root .hover\:bg-theme-surface\/50:hover {
+      background-color: color-mix(in oklab, var(--color-theme-surface) 50%, transparent);
+    }
+  }
+  #nextjs-log-inspector-root .hover\:text-indigo-300:hover {
+    color: var(--color-indigo-300);
+  }
+  #nextjs-log-inspector-root .hover\:text-rose-400:hover {
+    color: var(--color-rose-400);
+  }
+  #nextjs-log-inspector-root .hover\:text-theme-text-primary:hover {
+    color: var(--color-theme-text-primary);
+  }
+  #nextjs-log-inspector-root .hover\:text-theme-text-secondary:hover {
+    color: var(--color-theme-text-secondary);
+  }
+  #nextjs-log-inspector-root .hover\:underline:hover {
+    text-decoration-line: underline;
+  }
+}
+#nextjs-log-inspector-root .active\:scale-95:active {
+  --tw-scale-x: 95%;
+  --tw-scale-y: 95%;
+  --tw-scale-z: 95%;
+  scale: var(--tw-scale-x) var(--tw-scale-y);
+}
+#nextjs-log-inspector-root .active\:bg-indigo-600:active {
+  background-color: var(--color-indigo-600);
+}
+@media (prefers-color-scheme: dark) {
+  #nextjs-log-inspector-root .dark\:bg-white\/5 {
+    background-color: color-mix(in srgb, #fff 5%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    #nextjs-log-inspector-root .dark\:bg-white\/5 {
+      background-color: color-mix(in oklab, var(--color-white) 5%, transparent);
+    }
+  }
+}
+:root {
+  --color-theme-bg: var(--li-bg);
+  --color-theme-surface: var(--li-surface);
+  --color-theme-panel: var(--li-panel);
+  --color-theme-border: var(--li-border);
+  --color-theme-text-primary: var(--li-text-primary);
+  --color-theme-text-secondary: var(--li-text-secondary);
+  --color-theme-text-muted: var(--li-text-muted);
+  --li-radius-uniform: 8px;
+  --li-font-heading-lg: 11px;
+  --li-font-heading-sm: 10px;
+  --li-font-table-body: 9px;
+  --li-font-pill: 8px;
+  --li-bg: #0b0d12;
+  --li-surface: #131722;
+  --li-panel: #1a1f2c;
+  --li-border: #262d3d;
+  --li-text-primary: #e6eaf2;
+  --li-text-secondary: #9aa6bd;
+  --li-text-muted: #5f6b84;
+  --li-primary: #6366f1;
+  --li-primary-text: #ffffff;
+  --li-primary-border: #6366f1;
+  --li-primary-hover: #4f46e5;
+  --li-primary-muted: #312e81;
+  --li-primary-muted-text: #a5b4fc;
+  --li-primary-muted-border: #4338ca;
+  --li-secondary: #14b8a6;
+  --li-secondary-text: #042f2e;
+  --li-secondary-border: #14b8a6;
+  --li-secondary-hover: #0d9488;
+  --li-secondary-muted: #134e4a;
+  --li-secondary-muted-text: #5eead4;
+  --li-secondary-muted-border: #115e59;
+  --li-accent: #f43f5e;
+  --li-accent-text: #ffffff;
+  --li-accent-border: #f43f5e;
+  --li-accent-hover: #e11d48;
+  --li-accent-muted: #881337;
+  --li-accent-muted-text: #fda4af;
+  --li-accent-muted-border: #9f1239;
+}
+.li-light {
+  --color-theme-bg: var(--li-bg);
+  --color-theme-surface: var(--li-surface);
+  --color-theme-panel: var(--li-panel);
+  --color-theme-border: var(--li-border);
+  --color-theme-text-primary: var(--li-text-primary);
+  --color-theme-text-secondary: var(--li-text-secondary);
+  --color-theme-text-muted: var(--li-text-muted);
+  --li-bg: #f8fafc;
+  --li-surface: #eef2f7;
+  --li-panel: #ffffff;
+  --li-border: #94a3b8;
+  --li-text-primary: #0f172a;
+  --li-text-secondary: #475569;
+  --li-text-muted: #8a97a8;
+  --li-primary: #4f46e5;
+  --li-primary-text: #ffffff;
+  --li-primary-border: #4f46e5;
+  --li-primary-hover: #4338ca;
+  --li-primary-muted: #e0e7ff;
+  --li-primary-muted-text: #3730a3;
+  --li-primary-muted-border: #c7d2fe;
+  --li-secondary: #0d9488;
+  --li-secondary-text: #ffffff;
+  --li-secondary-border: #0d9488;
+  --li-secondary-hover: #0f766e;
+  --li-secondary-muted: #ccfbf1;
+  --li-secondary-muted-text: #115e59;
+  --li-secondary-muted-border: #99f6e4;
+  --li-accent: #e11d48;
+  --li-accent-text: #ffffff;
+  --li-accent-border: #e11d48;
+  --li-accent-hover: #be123c;
+  --li-accent-muted: #ffe4e6;
+  --li-accent-muted-text: #9f1239;
+  --li-accent-muted-border: #fecdd3;
+}
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-divide-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
+      --tw-space-y-reverse: 0;
+      --tw-divide-y-reverse: 0;
+      --tw-border-style: solid;
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-blur: initial;
+      --tw-brightness: initial;
+      --tw-contrast: initial;
+      --tw-grayscale: initial;
+      --tw-hue-rotate: initial;
+      --tw-invert: initial;
+      --tw-opacity: initial;
+      --tw-saturate: initial;
+      --tw-sepia: initial;
+      --tw-drop-shadow: initial;
+      --tw-drop-shadow-color: initial;
+      --tw-drop-shadow-alpha: 100%;
+      --tw-drop-shadow-size: initial;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
+    }
+  }
+}

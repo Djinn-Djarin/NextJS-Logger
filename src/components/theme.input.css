@@ -1,0 +1,157 @@
+/* Tailwind v4 source input */
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+@config '../../tailwind.config.js';
+
+/* 1. MAP TO TAILWIND THEME
+   This tells Tailwind to generate utilities (e.g., bg-primary, text-primary-muted) 
+   using our dynamic CSS variables. */
+@theme {
+    /* Base */
+    --color-theme-bg: var(--li-bg);
+    --color-theme-surface: var(--li-surface);
+    --color-theme-panel: var(--li-panel);
+    --color-theme-border: var(--li-border);
+    --color-theme-text-primary: var(--li-text-primary);
+    --color-theme-text-secondary: var(--li-text-secondary);
+    --color-theme-text-muted: var(--li-text-muted);
+    
+    /* Primary */
+    --color-primary: var(--li-primary);
+    --color-primary-text: var(--li-primary-text);
+    --color-primary-border: var(--li-primary-border);
+    --color-primary-hover: var(--li-primary-hover);
+    --color-primary-muted: var(--li-primary-muted);
+    --color-primary-muted-text: var(--li-primary-muted-text);
+    --color-primary-muted-border: var(--li-primary-muted-border);
+
+    /* Secondary */
+    --color-secondary: var(--li-secondary);
+    --color-secondary-text: var(--li-secondary-text);
+    --color-secondary-border: var(--li-secondary-border);
+    --color-secondary-hover: var(--li-secondary-hover);
+    --color-secondary-muted: var(--li-secondary-muted);
+    --color-secondary-muted-text: var(--li-secondary-muted-text);
+    --color-secondary-muted-border: var(--li-secondary-muted-border);
+
+    /* Accent */
+    --color-accent: var(--li-accent);
+    --color-accent-text: var(--li-accent-text);
+    --color-accent-border: var(--li-accent-border);
+    --color-accent-hover: var(--li-accent-hover);
+    --color-accent-muted: var(--li-accent-muted);
+    --color-accent-muted-text: var(--li-accent-muted-text);
+    --color-accent-muted-border: var(--li-accent-muted-border);
+
+    /* Typography & Shapes */
+    --text-heading-lg: var(--li-font-heading-lg);
+    --text-heading-sm: var(--li-font-heading-sm);
+    --text-li-body: var(--li-font-table-body);
+    --text-pill: var(--li-font-pill);
+    --radius-uniform: var(--li-radius-uniform);
+}
+
+/* 2. DEFAULT THEME (DARK) 
+   These variables power the Tailwind tokens above. */
+:root {
+    /* Force Tailwind variables to evaluate in the correct scope */
+    --color-theme-bg: var(--li-bg);
+    --color-theme-surface: var(--li-surface);
+    --color-theme-panel: var(--li-panel);
+    --color-theme-border: var(--li-border);
+    --color-theme-text-primary: var(--li-text-primary);
+    --color-theme-text-secondary: var(--li-text-secondary);
+    --color-theme-text-muted: var(--li-text-muted);
+
+    /* Globals */
+    --li-radius-uniform: 8px;
+    --li-font-heading-lg: 11px;
+    --li-font-heading-sm: 10px;
+    --li-font-table-body: 9px;
+    --li-font-pill: 8px;
+
+    /* Base Colors */
+    --li-bg: #0b0d12;
+    --li-surface: #131722;
+    --li-panel: #1a1f2c;
+    --li-border: #262d3d;
+    --li-text-primary: #e6eaf2;
+    --li-text-secondary: #9aa6bd;
+    --li-text-muted: #5f6b84;
+
+    /* Primary (Dark) */
+    --li-primary: #6366f1;
+    --li-primary-text: #ffffff;
+    --li-primary-border: #6366f1;
+    --li-primary-hover: #4f46e5;
+    --li-primary-muted: #312e81;
+    --li-primary-muted-text: #a5b4fc;
+    --li-primary-muted-border: #4338ca;
+
+    /* Secondary (Dark) */
+    --li-secondary: #14b8a6;
+    --li-secondary-text: #042f2e;
+    --li-secondary-border: #14b8a6;
+    --li-secondary-hover: #0d9488;
+    --li-secondary-muted: #134e4a;
+    --li-secondary-muted-text: #5eead4;
+    --li-secondary-muted-border: #115e59;
+
+    /* Accent (Dark) */
+    --li-accent: #f43f5e;
+    --li-accent-text: #ffffff;
+    --li-accent-border: #f43f5e;
+    --li-accent-hover: #e11d48;
+    --li-accent-muted: #881337;
+    --li-accent-muted-text: #fda4af;
+    --li-accent-muted-border: #9f1239;
+}
+
+/* 3. LIGHT THEME OVERRIDES 
+   Swaps the variables when .li-light is applied. */
+.li-light {
+    /* Force Tailwind variables to re-evaluate in light scope */
+    --color-theme-bg: var(--li-bg);
+    --color-theme-surface: var(--li-surface);
+    --color-theme-panel: var(--li-panel);
+    --color-theme-border: var(--li-border);
+    --color-theme-text-primary: var(--li-text-primary);
+    --color-theme-text-secondary: var(--li-text-secondary);
+    --color-theme-text-muted: var(--li-text-muted);
+
+    /* Base Colors */
+    --li-bg: #f8fafc;
+    --li-surface: #eef2f7;
+    --li-panel: #ffffff;
+    --li-border: #94a3b8; /* Darker slate-400 for better structure visibility */
+    --li-text-primary: #0f172a;
+    --li-text-secondary: #475569;
+    --li-text-muted: #8a97a8;
+
+    /* Primary (Light) */
+    --li-primary: #4f46e5;
+    --li-primary-text: #ffffff;
+    --li-primary-border: #4f46e5;
+    --li-primary-hover: #4338ca;
+    --li-primary-muted: #e0e7ff;
+    --li-primary-muted-text: #3730a3;
+    --li-primary-muted-border: #c7d2fe;
+
+    /* Secondary (Light) */
+    --li-secondary: #0d9488;
+    --li-secondary-text: #ffffff;
+    --li-secondary-border: #0d9488;
+    --li-secondary-hover: #0f766e;
+    --li-secondary-muted: #ccfbf1;
+    --li-secondary-muted-text: #115e59;
+    --li-secondary-muted-border: #99f6e4;
+
+    /* Accent (Light) */
+    --li-accent: #e11d48;
+    --li-accent-text: #ffffff;
+    --li-accent-border: #e11d48;
+    --li-accent-hover: #be123c;
+    --li-accent-muted: #ffe4e6;
+    --li-accent-muted-text: #9f1239;
+    --li-accent-muted-border: #fecdd3;
+}
