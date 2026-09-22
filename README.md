@@ -1,11 +1,11 @@
-# nextjs-log-inspector
+# @djarin/next-inspect
 
 Zero-code, pluggable request/API logging for Next.js. Drop in the plugin, and every `/api/*` call (and server-side `fetch`) is captured with method, URL, status, duration, request/response bodies and a `file:line` initiator — streamed to an always-on inspector panel in the corner of your app.
 
 ## Install
 
 ```bash
-npm i -D nextjs-log-inspector
+npm i -D @djarin/next-inspect
 ```
 
 ## Setup
@@ -13,11 +13,11 @@ npm i -D nextjs-log-inspector
 Add the `withLogInspector` wrapper to your `next.config.mjs` / `next.config.ts`:
 
 ```js
-import { withLogInspector } from 'nextjs-log-inspector/plugin';
+import { withLogInspector } from '@djarin/next-inspect/plugin';
 
 export default withLogInspector()({
   // Add package to transpilePackages when linking source or in monorepos
-  transpilePackages: ['nextjs-log-inspector'],
+  transpilePackages: ['@djarin/next-inspect'],
   // Next.js basePath (if your app uses a custom base path like '/traccrops')
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
 });
@@ -26,7 +26,13 @@ export default withLogInspector()({
 Then mount the panel in your root `app/layout.tsx`:
 
 ```tsx
-import { LogInspector } from 'nextjs-log-inspector/components';
+import '@djarin/next-inspect/inspector-theme.css';
+import dynamic from 'next/dynamic';
+
+const LogInspector = dynamic(
+  () => import('@djarin/next-inspect/components').then((mod) => mod.LogInspector),
+  { ssr: false }
+);
 
 export default function RootLayout({ children }) {
   return (
@@ -62,7 +68,7 @@ Your production bundle includes zero inspector overhead.
 
 ## Next.js `basePath` Support
 
-If your Next.js project relies on `basePath` (e.g., `basePath: '/traccrops'`), `nextjs-log-inspector` automatically resolves the effective base path for the SSE log stream (`/${basePath}/__log-inspector/stream`) and `/clear` endpoint without extra configuration. You can also explicitly set `NEXT_PUBLIC_BASE_PATH` in your `.env`.
+If your Next.js project relies on `basePath` (e.g., `basePath: '/traccrops'`), `@djarin/next-inspect` automatically resolves the effective base path for the SSE log stream (`/${basePath}/__log-inspector/stream`) and `/clear` endpoint without extra configuration. You can also explicitly set `NEXT_PUBLIC_BASE_PATH` in your `.env`.
 
 ## Generated files
 
@@ -79,7 +85,7 @@ The plugin automatically generates the following files in your `app/` directory 
 If your app already has custom server setup, you can wire capture manually in `instrumentation.ts`:
 
 ```ts
-import { installServerCapture } from 'nextjs-log-inspector/server';
+import { installServerCapture } from '@djarin/next-inspect/server';
 
 export async function register() {
   installServerCapture({
@@ -130,4 +136,4 @@ MIT
 
 ## Known Limitations
 
-- **Response Bodies for Outbound Fetches (Next.js 15)**: `nextjs-log-inspector` intercepts `globalThis.fetch` to log outbound server requests. However, due to a known bug in Next.js 15 / `undici` (PR #73274), calling `.clone().text()` on a patched fetch response can cause the request to hang indefinitely. To prevent your application from deadlocking, the inspector captures outbound fetch status codes and metadata but **does not** read or log the response body for outbound requests on the server. Inbound request bodies (`/api/*`) are still fully logged.
+- **Response Bodies for Outbound Fetches (Next.js 15)**: `@djarin/next-inspect` intercepts `globalThis.fetch` to log outbound server requests. However, due to a known bug in Next.js 15 / `undici` (PR #73274), calling `.clone().text()` on a patched fetch response can cause the request to hang indefinitely. To prevent your application from deadlocking, the inspector captures outbound fetch status codes and metadata but **does not** read or log the response body for outbound requests on the server. Inbound request bodies (`/api/*`) are still fully logged.
